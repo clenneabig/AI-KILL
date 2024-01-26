@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmld4sshhilmo"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ddabx"]
+[ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="1_dihwr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsppu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dihwr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdvj1"]
+size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5713"]
+size = Vector2(200, 200)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_ddabx")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vsppu")
+animation = &"idle"
+
+[node name="SpriteBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jdvj1")
+
+[node name="GrazeBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o5713")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
