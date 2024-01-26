@@ -20,8 +20,11 @@ func _process(delta):
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 
+
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		var realSpeed = speed/2 if Input.is_action_pressed("focus_mode") else speed
+		
+		velocity = velocity.normalized() * realSpeed
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
