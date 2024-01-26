@@ -1,37 +1,104 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmld4sshhilmo"]
+[gd_scene load_steps=16 format=3 uid="uid://dmld4sshhilmo"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ddabx"]
 [ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="1_dihwr"]
+[ext_resource type="Texture2D" uid="uid://dh4xu26ln3k31" path="res://assets/aiplayer_spritesheet.png" id="2_6h5vl"]
+[ext_resource type="Script" path="res://bomb.gd" id="3_n6vr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dip8o"]
+atlas = ExtResource("2_6h5vl")
+region = Rect2(0, 0, 99, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw88g"]
+atlas = ExtResource("2_6h5vl")
+region = Rect2(99, 0, 99, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pubqd"]
+atlas = ExtResource("2_6h5vl")
+region = Rect2(198, 0, 99, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y01h3"]
+atlas = ExtResource("2_6h5vl")
+region = Rect2(297, 0, 99, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b706l"]
+atlas = ExtResource("2_6h5vl")
+region = Rect2(396, 0, 99, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws1o2"]
+atlas = ExtResource("2_6h5vl")
+region = Rect2(495, 0, 99, 51)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsppu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dihwr")
+"texture": SubResource("AtlasTexture_dip8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw88g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pubqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y01h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b706l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws1o2")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 5.0
+"name": &"default",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdvj1"]
 size = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5713"]
-size = Vector2(200, 200)
+size = Vector2(98, 43)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv5w7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dihwr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_geqy1"]
+radius = 1.0
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_ddabx")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vsppu")
-animation = &"idle"
 
 [node name="SpriteBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jdvj1")
 
 [node name="GrazeBox" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2.5)
 shape = SubResource("RectangleShape2D_o5713")
 
+[node name="Bomb" type="Area2D" parent="."]
+script = ExtResource("3_n6vr3")
+
+[node name="Bomb" type="AnimatedSprite2D" parent="Bomb"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_yv5w7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
+shape = SubResource("CircleShape2D_geqy1")
+disabled = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="bomb" from="." to="Bomb" method="_on_player_bomb"]
