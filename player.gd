@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var speed = 400
 var screen_size
@@ -7,6 +8,11 @@ var screen_size
 func _ready():
 	screen_size = get_viewport_rect().size
 
+func start(pos):
+	position = pos
+	show()
+	$SpriteBox.disabled = false
+	$GrazeBox.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,3 +37,11 @@ func _process(delta):
 
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+
+
+func _on_body_entered(body):
+	hide() # Player disappears after being hit.
+	hit.emit()
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$SpriteBox.set_deferred("disabled", true)
+	$GrazeBox.set_deferred("disabled", true)
