@@ -3,13 +3,14 @@ class_name Emitter
 
 var bullet_scene = preload("res://BulletPattens/bullet.tscn")
 @onready var shoot_timer = $ShootTime
-@export var spawn_count = 12
+var wait_time = 0.2
+@export var spawn_count = 6
 var step
+var vel = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shoot_timer.start()
-	#step = 2 * PI /spawn_count
 	step = 2 * PI /spawn_count
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,4 +28,4 @@ func _shoot(vel, i):
 	
 func _on_shoot_time_timeout():
 	for i in spawn_count:
-		_shoot(100, i)
+		_shoot(vel, i)
