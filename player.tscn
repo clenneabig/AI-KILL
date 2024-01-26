@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmld4sshhilmo"]
+[gd_scene load_steps=6 format=3 uid="uid://dmld4sshhilmo"]
 
+[ext_resource type="Script" path="res://player.gd" id="1_ddabx"]
 [ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="1_dihwr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsppu"]
@@ -20,6 +21,7 @@ size = Vector2(1, 1)
 size = Vector2(200, 200)
 
 [node name="Player" type="Area2D"]
+script = ExtResource("1_ddabx")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
