@@ -8,10 +8,16 @@ var screen_size
 var health = 3
 var bullets = true
 var origin = Vector2(50, 350)
+var bullet_scene = preload("res://playerbullet.tscn")
+var step
+var vel = 600
+var wait_time = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	$ShootTime.wait_time = wait_time
+	$ShootTime.start()
 
 func start(pos):
 	position = origin
@@ -47,11 +53,25 @@ func _process(delta):
 		bomb.emit()
 		$ProgressBar.value = 0
 
-	if Input.is_action_pressed("toggle_bullets"):
+	if Input.is_action_just_pressed("toggle_bullets"):
 		bullets = not bullets
 
+	if bullets:
+		$ShootTime.set_paused(false)
+	elif not bullets:
+		$ShootTime.set_paused(true)
+		
+
+
+func _shoot(vel):
+	var nb = bullet_scene.instantiate()
+	nb.speed = Vector2(vel, 0)
+	nb.position = position
+	nb.rotation = rotation
+	get_parent().add_child(nb)
+
+
 func _on_area_entered(area):
-	print(area)
 	if area.is_in_group("Bullet"): #or enemy
 		health -= 1
 		hit.emit()
@@ -71,6 +91,11 @@ func _on_graze_area_area_entered(area):
 		if(self.is_visible()):
 			print("add to style points")
 
+
+func _on_shoot_time_timeout():
+	$ShootTime.wait_time = wait_time
+	$ShootTime.start()
+	_shoot(vel)
 
 func respawn():
 	position = origin
