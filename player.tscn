@@ -102,3 +102,4 @@ disabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="bomb" from="." to="Bomb" method="_on_player_bomb"]
+[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]

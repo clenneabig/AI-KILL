@@ -26,3 +26,7 @@ func _on_player_bomb():
 	$Bomb.scale = Vector2(1, 1)
 	$Bomb.visible = true
 	$CollisionShape2D.disabled = false
+
+
+func _on_body_entered(body:Node2D):
+	pass # Replace with function body.
