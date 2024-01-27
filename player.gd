@@ -8,7 +8,6 @@ var screen_size
 var health = 3
 var bullets = true
 var origin = Vector2(50, 350)
-var is_invincible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
