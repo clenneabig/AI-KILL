@@ -2,26 +2,31 @@ extends Area2D
 signal hit
 signal bomb
 signal game_over
-
 @export var speed = 400
 var screen_size
 var health = 3
 var bullets = true
-var origin = Vector2(50, 350)
+var origin
 var bullet_scene = preload("res://playerbullet.tscn")
 var step
 var vel = 600
 var wait_time = 0.2
 
-var ShootTime = Timer.new()
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_child(ShootTime)
-	ShootTime.timeout.connect(_on_shoot_time_timeout)
 	screen_size = get_viewport_rect().size
-	ShootTime.wait_time = wait_time
-	ShootTime.start()
+	$ShootTime.wait_time = wait_time
+	$ShootTime.start()
+	var sprite_frames = $Player.sprite_frames
+	var texture       = sprite_frames.get_frame_texture("default", 0)
+	var texture_size  = texture.get_size()
+	var as2d_size     = texture_size * $Player.get_scale()
+	origin = Vector2(as2d_size.x/2, screen_size.y/2)
+	position = origin
+	show()
+	$SpriteBox.disabled = false
+	$GrazeArea.monitoring = true
+	$GrazeArea.monitorable = true
 
 func start(pos):
 	position = origin
@@ -29,7 +34,6 @@ func start(pos):
 	$SpriteBox.disabled = false
 	$GrazeArea.monitoring = true
 	$GrazeArea.monitorable = true
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Player.play()
@@ -42,17 +46,13 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-
-
 	if velocity.length() > 0:
 		var realSpeed = speed/2 if Input.is_action_pressed("focus_mode") else speed
 		
 		velocity = velocity.normalized() * realSpeed
-
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	#self.position = get_viewport().get_mouse_position()
-
 	if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
 		bomb.emit()
 		$ProgressBar.value = 0
@@ -61,10 +61,10 @@ func _process(delta):
 		bullets = not bullets
 
 	if bullets:
-		ShootTime.set_paused(false)
+		$ShootTime.set_paused(false)
 	elif not bullets:
-		ShootTime.set_paused(true)
-		
+		$ShootTime.set_paused(true)
+
 
 
 func _shoot(vel):
@@ -84,11 +84,10 @@ func _on_area_entered(area):
 			game_over.emit()
 		hide() # Player disappears after being hit. #player needs to appear again lol
 		
-		if not $SpriteBox.disabled:
+	# Must be deferred as we can't change physics properties on a physics callback.
+		if not $SpriteBox.is_invincible:
 			respawn()
 	#$GrazeBox.set_deferred("disabled", true)
-
-
 func _on_graze_area_area_entered(area):
 	if area.is_in_group("Bullet"):
 		if(self.is_visible()):
@@ -96,8 +95,8 @@ func _on_graze_area_area_entered(area):
 
 
 func _on_shoot_time_timeout():
-	ShootTime.wait_time = wait_time
-	ShootTime.start()
+	$ShootTime.wait_time = wait_time
+	$ShootTime.start()
 	_shoot(vel)
 
 func respawn():
