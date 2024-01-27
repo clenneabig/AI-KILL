@@ -13,7 +13,7 @@ var Acc_Cap = 100.0
 func _process(delta):
 	self.position += (speed.rotated(self.rotation) * delta) + curret_acc
 	if(accel and curret_acc.x>(-Acc_Cap)): curret_acc.x -= acc
-	if(deccel and curret_acc.x < 8): curret_acc.x += acc/10
+	if(deccel and curret_acc.x < 4): curret_acc.x += acc/20
 	dur -= delta
 	if dur <= 0: #avoid memory eating
 		queue_free()

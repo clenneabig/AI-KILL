@@ -3,8 +3,8 @@ extends Straight_Shot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	shoot_timer.wait_time = 1.0
-	vel = 300
+	shoot_timer.wait_time = 0.6
+	vel = 350
 	super()
 
 func _shoot(vel, _i):
