@@ -17,6 +17,9 @@ func _process(delta):
 	dur -= delta
 	if dur <= 0: #avoid memory eating
 		queue_free()
+
+func _offScreen(): #explicity remove bullets when off screen so I can free enemies
+	pass
 	
 
 

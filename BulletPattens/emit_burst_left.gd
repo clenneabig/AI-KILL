@@ -9,12 +9,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	self.rotate(0.05)
 
 func _shoot(vel, i):
 	var nb = bullet_scene.instantiate()
 	nb.speed = Vector2(-vel, 0).rotated((step/2*i))
-	nb.position = position
+	nb.position = global_position
 	nb.rotation = rotation
-	get_parent().add_child(nb)
+	Bullet_Holder.add_child(nb)

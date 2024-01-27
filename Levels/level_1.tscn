@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://hxumoqi0wf5u"]
+
+[ext_resource type="PackedScene" uid="uid://xh6yp4d5802s" path="res://Levels/background.tscn" id="1_4056i"]
+[ext_resource type="Script" path="res://Levels/Enemies_1.gd" id="2_5yxem"]
+[ext_resource type="PackedScene" uid="uid://brskhjplhpctm" path="res://enemy.tscn" id="2_jb2pd"]
+
+[sub_resource type="Curve2D" id="Curve2D_gyrlu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -8, 0, 0, 0, 0, -192, -8, 0, 0, 0, 0, -600, -8, 0, 0, 0, 0, -968, -424, 0, 0, 0, 0, -1472, -424)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_x4k0g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8, -424, 0, 0, 0, 0, -608, -424, 0, 0, 0, 0, -968, -8, 0, 0, 0, 0, -1464, -8)
+}
+point_count = 4
+
+[node name="Level_1" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_4056i")]
+visible = false
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("2_5yxem")
+
+[node name="Group_1" type="Node2D" parent="Enemies"]
+position = Vector2(1344, 568)
+
+[node name="Path2D" type="Path2D" parent="Enemies/Group_1"]
+curve = SubResource("Curve2D_gyrlu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Group_1/Path2D"]
+position = Vector2(0, -8)
+rotation = -3.13688
+rotates = false
+loop = false
+
+[node name="Enemy1" parent="Enemies/Group_1/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
+position = Vector2(-7.96216, 8.03772)
+rotation = 3.1309
+
+[node name="Emit" parent="Enemies/Group_1/Path2D/PathFollow2D/Enemy1" index="0"]
+spawn_count = 12
+shoot_timer_one_shot = false
+vel = 200
+
+[node name="Enemy2" parent="Enemies/Group_1/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
+position = Vector2(-96.1499, -31.5468)
+rotation = 3.1309
+
+[node name="Emit" parent="Enemies/Group_1/Path2D/PathFollow2D/Enemy2" index="0"]
+spawn_count = 12
+shoot_timer_one_shot = false
+vel = 200
+
+[node name="Enemy3" parent="Enemies/Group_1/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
+position = Vector2(-95.7349, 56.4521)
+rotation = 3.1309
+
+[node name="Emit" parent="Enemies/Group_1/Path2D/PathFollow2D/Enemy3" index="0"]
+spawn_count = 12
+shoot_timer_one_shot = false
+vel = 200
+
+[node name="Group_2" type="Node2D" parent="Enemies"]
+position = Vector2(1344, 568)
+
+[node name="Path2D" type="Path2D" parent="Enemies/Group_2"]
+curve = SubResource("Curve2D_x4k0g")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Group_2/Path2D"]
+position = Vector2(8, -424)
+rotation = -3.13688
+rotates = false
+loop = false
+
+[node name="Enemy1" parent="Enemies/Group_2/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
+position = Vector2(-7.96216, 8.03772)
+rotation = 3.1309
+
+[node name="Emit" parent="Enemies/Group_2/Path2D/PathFollow2D/Enemy1" index="0"]
+spawn_count = 12
+shoot_timer_one_shot = false
+vel = 200
+
+[node name="Enemy2" parent="Enemies/Group_2/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
+position = Vector2(-96.1499, -31.5468)
+rotation = 3.1309
+
+[node name="Emit" parent="Enemies/Group_2/Path2D/PathFollow2D/Enemy2" index="0"]
+spawn_count = 12
+shoot_timer_one_shot = false
+vel = 200
+
+[node name="Enemy3" parent="Enemies/Group_2/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
+position = Vector2(-95.7349, 56.4521)
+rotation = 3.1309
+
+[node name="Emit" parent="Enemies/Group_2/Path2D/PathFollow2D/Enemy3" index="0"]
+spawn_count = 12
+shoot_timer_one_shot = false
+vel = 200
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-500, 0)
+
+[node name="Bullet_Node" type="Node2D" parent="." groups=["Bullet_Node"]]
+
+[editable path="Enemies/Group_1/Path2D/PathFollow2D/Enemy1"]
+[editable path="Enemies/Group_1/Path2D/PathFollow2D/Enemy2"]
+[editable path="Enemies/Group_1/Path2D/PathFollow2D/Enemy3"]
+[editable path="Enemies/Group_2/Path2D/PathFollow2D/Enemy1"]
+[editable path="Enemies/Group_2/Path2D/PathFollow2D/Enemy2"]
+[editable path="Enemies/Group_2/Path2D/PathFollow2D/Enemy3"]
