@@ -5,7 +5,7 @@ var bullet_scene = preload("res://BulletPattens/bullet.tscn")
 @onready var shoot_timer = $ShootTime
 @export var spawn_count = 6
 var rotate_speed = 0.1
-var wait_time = 0.2
+var wait_time = 1.0
 var step
 var vel = 100
 var rotation_flip = false
@@ -17,10 +17,11 @@ enum Rotate_State{
 	jitter,
 	none
 }
-var Current_Rotation = Rotate_State.jitter
+var Current_Rotation = Rotate_State.none
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	shoot_timer.wait_time = wait_time
 	shoot_timer.start()
 	step = 2 * PI /spawn_count
 	
@@ -30,7 +31,6 @@ func _process(delta):
 		Rotate_State.rotating_360:
 			_rotate(rotate_speed)
 		Rotate_State.rotating_180:
-			print(rad_to_deg(rotation))
 			if(rotation_flip):
 				_rotate(-rotate_speed)
 				if(rad_to_deg(rotation) <= -90):
@@ -40,7 +40,6 @@ func _process(delta):
 				if(rad_to_deg(rotation) >= 90):
 					rotation_flip = true
 		Rotate_State.rotating_45:
-			print(rad_to_deg(rotation))
 			if(rotation_flip):
 				_rotate(-rotate_speed)
 				if(rad_to_deg(rotation) <= -45):
@@ -50,7 +49,6 @@ func _process(delta):
 				if(rad_to_deg(rotation) >= 45):
 					rotation_flip = true
 		Rotate_State.jitter:
-			print(rad_to_deg(rotation))
 			if(rotation_flip):
 				_rotate(-rotate_speed)
 				if(rad_to_deg(rotation) <= -15):

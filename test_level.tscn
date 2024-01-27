@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://co7thk131wxna"]
+
+[ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_3l5mm"]
+[ext_resource type="Texture2D" uid="uid://dwjghaxfbjjg5" path="res://assets/background.png" id="1_gshs1"]
+[ext_resource type="PackedScene" uid="uid://q4ca5to7f7tm" path="res://player.tscn" id="3_owqlb"]
+[ext_resource type="PackedScene" uid="uid://brskhjplhpctm" path="res://enemy.tscn" id="4_dxfl4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_3l5mm")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(3488, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 3488.0
+offset_bottom = 654.0
+texture = ExtResource("1_gshs1")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_owqlb")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" groups=["Enemy"] instance=ExtResource("4_dxfl4")]
+position = Vector2(709, 343)

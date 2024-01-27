@@ -1,5 +1,5 @@
 #Basic Bullet (Parent) Node (Will make class so can be used for diffrent bullets laters)
-extends Node
+extends Area2D
 
 var speed = Vector2(0, 0)
 var dur = 20
@@ -21,7 +21,8 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	#if(isPlayer)
-	#	body.takeDamage
-	#queue_free()
+	if(body.is_in_group("Player")):
+		#body.takeDamage
+		print("ouch")
+		queue_free()
 	pass

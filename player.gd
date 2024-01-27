@@ -41,16 +41,19 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	#self.position = get_viewport().get_mouse_position()
 
-	if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
-		bomb.emit()
+	#if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
+		#bomb.emit()
 
-	if Input.is_action_pressed("toggle_bullets"):
-		bullets = not bullets
+	#if Input.is_action_pressed("toggle_bullets"):
+		#bullets = not bullets
 
 
-func _on_body_entered(body):
+func _on_body_entered(body): #useless delete probably
+	print(body)
+	#print("ouch")
 	health -= 1
 	if health <= 0:
+		print("deaded")
 		game_over.emit()
 	hide() # Player disappears after being hit.
 	hit.emit()
@@ -58,3 +61,24 @@ func _on_body_entered(body):
 	$SpriteBox.set_deferred("disabled", true)
 	$GrazeBox.set_deferred("disabled", true)
 
+
+
+func _on_area_entered(area):
+	print(area)
+	if area.is_in_group("Bullet"): #or enemy
+		health -= 1
+		hit.emit()
+		if health <= 0:
+			print("deaded")
+			game_over.emit()
+		hide() # Player disappears after being hit. #player needs to appear again lol
+		
+	# Must be deferred as we can't change physics properties on a physics callback.
+		$SpriteBox.set_deferred("disabled", true)
+	#$GrazeBox.set_deferred("disabled", true)
+
+
+func _on_graze_area_area_entered(area):
+	if area.is_in_group("Bullet"):
+		if(self.is_visible()):
+			print("add to style points")
