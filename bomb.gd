@@ -14,7 +14,7 @@ func _process(delta):
 		$CollisionShape2D.scale.y += 0.25
 		$Bomb.scale.x += 0.25
 		$Bomb.scale.y += 0.25
-		if $CollisionShape2D.scale.x >= longest/50:
+		if $CollisionShape2D.scale.x >= longest/15:
 			$Bomb.visible = false
 			$CollisionShape2D.disabled = true
 

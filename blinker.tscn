@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpjs00j7t4ni7"]
+
+[ext_resource type="Script" path="res://Blinker.gd" id="1_sx8f6"]
+
+[node name="Blinker" type="Node"]
+script = ExtResource("1_sx8f6")
+
+[node name="BlinkTime" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="BlinkTime" to="." method="_on_blink_time_timeout"]
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
