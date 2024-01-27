@@ -42,6 +42,7 @@ func _process(delta):
 	#self.position = get_viewport().get_mouse_position()
 
 	if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
+		$ProgressBar.value = 0
 		bomb.emit()
 
 	if Input.is_action_pressed("toggle_bullets"):
