@@ -44,11 +44,12 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	#self.position = get_viewport().get_mouse_position()
 
-	#if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
-		#bomb.emit()
+	if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
+		bomb.emit()
+		$ProgressBar.value = 0
 
-	#if Input.is_action_pressed("toggle_bullets"):
-		#bullets = not bullets
+	if Input.is_action_pressed("toggle_bullets"):
+		bullets = not bullets
 
 func _on_area_entered(area):
 	print(area)

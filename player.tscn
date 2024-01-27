@@ -97,7 +97,6 @@ debug_color = Color(0.976471, 0, 0.211765, 0.419608)
 script = ExtResource("3_77htn")
 
 [node name="Bomb" type="Area2D" parent="."]
-visible = false
 script = ExtResource("3_n6vr3")
 
 [node name="Bomb" type="AnimatedSprite2D" parent="Bomb"]
