@@ -12,6 +12,7 @@ var bullet_scene = preload("res://BulletPattens/bullet.tscn")
 @export var shoot_timer_one_shot = true
 @export var wait_time = 1.0
 @export var vel = 100
+@export var texture = 0 #between 0 & 8
 
 var step
 var rotation_flip = false
@@ -27,10 +28,10 @@ enum Rotate_State{
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(constant_shot): _startShootin()
 	shoot_timer.one_shot = shoot_timer_one_shot
 	shoot_timer.wait_time = wait_time
 	step = 2 * PI /spawn_count
+	if(constant_shot): _startShootin()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -71,10 +72,12 @@ func _shoot(_vel, i):
 	nb.position = global_position
 	nb.rotation = rotation
 	Bullet_Holder.add_child(nb)
+	nb._change_texture(texture)
 	
 func _on_shoot_time_timeout():
-	for i in spawn_count:
-		_shoot(vel, i)
+	if(global_position.x < 1152):
+		for i in spawn_count:
+			_shoot(vel, i)
 
 
 func _rotate(r:float):

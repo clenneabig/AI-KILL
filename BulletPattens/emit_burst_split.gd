@@ -20,6 +20,7 @@ func _shoot(vel, i):
 	nb.position = global_position
 	nb.rotation = rotation
 	Bullet_Holder.add_child(nb)
+	nb._change_texture(texture)
 	stg_timer.start()
 	await stg_timer.timeout
 	for j in spawn_count:
@@ -28,3 +29,4 @@ func _shoot(vel, i):
 		nb_2.position = nb.position
 		nb_2.rotation = rotation
 		Bullet_Holder.add_child(nb_2)
+		nb_2._change_texture(texture)

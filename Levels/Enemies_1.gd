@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var group1 = $Group_1/Path2D/PathFollow2D
 @onready var group2 = $Group_2/Path2D/PathFollow2D
+@onready var group3 = $Group_3
+@onready var group4 = $Group_4
 
 var g_move_speed = 150.0
 var paused = false
@@ -62,3 +64,17 @@ func _process(delta):
 					p = true
 			if(group2.get_child_count() == 0):
 				CurrentGroup = Groups.Group3
+		Groups.Group3:
+			var childrenNo = group3.get_child_count()-1
+			for path in group3.get_children():
+				path.get_child(0).progress += g_move_speed*2 * delta
+				print(childrenNo)
+				if(path.get_child(0).progress_ratio >= 1.0):
+					childrenNo-=1
+			if(childrenNo <= 0):
+				CurrentGroup = Groups.Group4
+		Groups.Group4:
+			for path in group4.get_children():
+				path.get_child(0).progress += g_move_speed*1.5 * delta
+			if(group4.get_child_count() == 0):
+				CurrentGroup = Groups.Group5
