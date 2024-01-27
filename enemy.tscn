@@ -1,12 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://ps613f6vc702"]
+[gd_scene load_steps=11 format=3 uid="uid://brskhjplhpctm"]
 
-[ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="1_4jj15"]
+[ext_resource type="Texture2D" uid="uid://hgs3jb8sm8bl" path="res://assets/enemies/enemy1_spritesheet.png" id="1_4eeom"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_io0xw"]
+[ext_resource type="PackedScene" uid="uid://qjrut43w7wo0" path="res://BulletPattens/emit.tscn" id="2_tqi7x"]
+[ext_resource type="Script" path="res://BulletPattens/bullet_emitter.gd" id="3_vyqkx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1thr6"]
+atlas = ExtResource("1_4eeom")
+region = Rect2(0, 0, 81, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sfcu"]
+atlas = ExtResource("1_4eeom")
+region = Rect2(81, 0, 81, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qbha"]
+atlas = ExtResource("1_4eeom")
+region = Rect2(162, 0, 81, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjisx"]
+atlas = ExtResource("1_4eeom")
+region = Rect2(243, 0, 81, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vsppu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4jj15")
+"texture": SubResource("AtlasTexture_1thr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sfcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qbha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjisx")
 }],
 "loop": true,
 "name": &"idle",
@@ -14,14 +42,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdvj1"]
-size = Vector2(1, 1)
+size = Vector2(33, 18)
 
 [node name="Enemy" type="Area2D"]
+script = ExtResource("1_io0xw")
 metadata/_edit_group_ = true
+
+[node name="Emit" parent="." instance=ExtResource("2_tqi7x")]
+position = Vector2(-8, 7)
+script = ExtResource("3_vyqkx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vsppu")
 animation = &"idle"
 
 [node name="SpriteBox" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 7)
 shape = SubResource("RectangleShape2D_jdvj1")
