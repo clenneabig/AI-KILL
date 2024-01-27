@@ -57,3 +57,5 @@ animation = &"idle"
 [node name="SpriteBox" type="CollisionShape2D" parent="."]
 position = Vector2(-5.5, 7)
 shape = SubResource("RectangleShape2D_jdvj1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -15,3 +15,14 @@ func _process(delta):
 
 func _offScreen():
 	queue_free()
+
+
+func _on_area_entered(area):
+	if area.is_in_group("Player_Bullets"): #or enemy
+		health -= 1
+		if(health <= 0):
+			_turn_to_power()
+			_offScreen()
+			
+func _turn_to_power():
+	print ("Implement me!!")

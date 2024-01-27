@@ -149,7 +149,6 @@ point_count = 5
 script = ExtResource("2_5yxem")
 
 [node name="Group_1" type="Node2D" parent="Enemies"]
-visible = false
 position = Vector2(1344, 568)
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_1"]
@@ -186,7 +185,6 @@ spawn_count = 12
 vel = 200
 
 [node name="Group_2" type="Node2D" parent="Enemies"]
-visible = false
 position = Vector2(1344, 568)
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_2"]
@@ -223,7 +221,6 @@ spawn_count = 12
 vel = 200
 
 [node name="Group_3" type="Node2D" parent="Enemies"]
-visible = false
 position = Vector2(1344, 568)
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_3"]
@@ -351,7 +348,6 @@ vel = 250
 texture = 6
 
 [node name="Group_4" type="Node2D" parent="Enemies"]
-visible = false
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_4"]
 curve = SubResource("Curve2D_46gad")

@@ -56,3 +56,13 @@ func move_to_centre():
 	global_position = position.lerp(Vector2(1000, 327), 0.08)
 	if(global_position.x-1000 < 0.1):
 		inPos = true
+
+func _on_area_entered(area):
+	if area.is_in_group("Player_Bullets"): #or enemy
+		health -= 1
+		if(health <= 0):
+			_turn_to_point()
+			_offScreen()
+			
+func _turn_to_point():
+	print("implement me!!")

@@ -84,8 +84,7 @@ func _on_area_entered(area):
 			game_over.emit()
 		hide() # Player disappears after being hit. #player needs to appear again lol
 		
-	# Must be deferred as we can't change physics properties on a physics callback.
-		if not $SpriteBox.is_invincible:
+		if not $SpriteBox.disabled:
 			respawn()
 	#$GrazeBox.set_deferred("disabled", true)
 
