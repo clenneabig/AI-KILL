@@ -351,6 +351,7 @@ vel = 250
 texture = 6
 
 [node name="Group_4" type="Node2D" parent="Enemies"]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_4"]
 curve = SubResource("Curve2D_46gad")

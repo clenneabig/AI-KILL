@@ -13,6 +13,7 @@ var bullet_scene = preload("res://BulletPattens/bullet.tscn")
 @export var wait_time = 1.0
 @export var vel = 100
 @export var texture = 0 #between 0 & 8
+@export var cycle = false
 
 var step
 var rotation_flip = false
@@ -76,6 +77,8 @@ func _shoot(_vel, i):
 	
 func _on_shoot_time_timeout():
 	if(global_position.x < 1152):
+		if(cycle and texture < 8): texture+=1
+		elif (cycle): texture = 0
 		for i in spawn_count:
 			_shoot(vel, i)
 
@@ -85,3 +88,5 @@ func _rotate(r:float):
 	
 func _startShootin():
 	shoot_timer.start()
+func _stopShootin():
+	shoot_timer.stop()

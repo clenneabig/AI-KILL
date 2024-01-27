@@ -7,6 +7,7 @@ extends Area2D
 
 @export var health = 3000
 var inPos = false
+var notShooting = true
 
 enum State{
 	Healthy,
@@ -25,10 +26,26 @@ func _ready():
 func _process(delta):
 	match CurrentState:
 		State.Healthy:
-			print("healthy")
-			if(inPos):
-				print("pos")
-				emit_1._startShootin()#FIX ME!!
+			if(inPos and notShooting):
+				emit_1._startShootin()
+				emit_2._startShootin()
+				notShooting = false
+			if health <= 2000:
+				notShooting = true
+				emit_1._stopShootin()
+				emit_2._stopShootin()
+				emit_2.wait_time = 1.0
+				CurrentState = State.Damaged
+		State.Damaged:
+			if(inPos and notShooting):
+				emit_3._startShootin()
+				emit_2._startShootin()
+				notShooting = false
+			if health <= 1000:
+				notShooting = true
+				CurrentState = State.Dying
+			
+				
 	if(global_position.x <= 0):
 		_offScreen()
 
@@ -36,6 +53,6 @@ func _offScreen():
 	queue_free()
 
 func move_to_centre():
-	global_position = position.lerp(Vector2(800, 327), 0.08)
-	if(global_position.x-800 < 0.1):
+	global_position = position.lerp(Vector2(1000, 327), 0.08)
+	if(global_position.x-1000 < 0.1):
 		inPos = true

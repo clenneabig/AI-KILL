@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cty2ebpktltbj"]
+[gd_scene load_steps=11 format=3 uid="uid://cty2ebpktltbj"]
 
 [ext_resource type="Texture2D" uid="uid://b68kxgwywhw5q" path="res://assets/enemies/enemy2_spritesheet.png" id="1_74bk7"]
 [ext_resource type="Script" path="res://mid_boss.gd" id="1_o77xn"]
 [ext_resource type="PackedScene" uid="uid://qjrut43w7wo0" path="res://BulletPattens/emit.tscn" id="3_4fxtj"]
+[ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="3_eqx4u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apacy"]
 atlas = ExtResource("1_74bk7")
@@ -46,6 +47,28 @@ size = Vector2(32.3333, 17)
 [node name="MidBoss" type="Area2D"]
 script = ExtResource("1_o77xn")
 
+[node name="Emit" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+script = ExtResource("3_eqx4u")
+spawn_count = 3
+wait_time = 0.1
+Current_Rotation = 1
+
+[node name="Emit2" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+spawn_count = 12
+wait_time = 4.0
+vel = 200
+cycle = true
+
+[node name="Emit3" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+wait_time = 0.1
+
+[node name="Emit4" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+wait_time = 0.1
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bgln6")
@@ -55,12 +78,3 @@ frame_progress = 0.668432
 position = Vector2(-16.5, 22.5)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_pwkv4")
-
-[node name="Emit" parent="." instance=ExtResource("3_4fxtj")]
-wait_time = 0.1
-
-[node name="Emit2" parent="." instance=ExtResource("3_4fxtj")]
-
-[node name="Emit3" parent="." instance=ExtResource("3_4fxtj")]
-
-[node name="Emit4" parent="." instance=ExtResource("3_4fxtj")]

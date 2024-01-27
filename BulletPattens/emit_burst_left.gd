@@ -17,3 +17,4 @@ func _shoot(vel, i):
 	nb.rotation = rotation
 	Bullet_Holder.add_child(nb)
 	nb._change_texture(texture)
+	
