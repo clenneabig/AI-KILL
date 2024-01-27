@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmld4sshhilmo"]
+[gd_scene load_steps=17 format=3 uid="uid://dmld4sshhilmo"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ddabx"]
-[ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="1_dihwr"]
 [ext_resource type="Texture2D" uid="uid://b4e1b1jgn7nup" path="res://assets/aiplayer_spritesheet.png" id="2_6h5vl"]
 [ext_resource type="Script" path="res://SpriteBox.gd" id="3_77htn"]
 [ext_resource type="Script" path="res://bomb.gd" id="3_n6vr3"]
 [ext_resource type="PackedScene" uid="uid://bpjs00j7t4ni7" path="res://blinker.tscn" id="5_hns8k"]
+[ext_resource type="Texture2D" uid="uid://cfj56wa8vvj0c" path="res://assets/bullets/playerbullets/aibullet3.png" id="5_kqjkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5713"]
 size = Vector2(97, 45)
@@ -63,19 +63,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdvj1"]
 size = Vector2(3, 3)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yv5w7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_dihwr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_geqy1"]
-radius = 1.0
+radius = 20.0
 
 [node name="Player" type="Area2D"]
 position = Vector2(14, 2)
@@ -99,9 +88,10 @@ script = ExtResource("3_77htn")
 [node name="Bomb" type="Area2D" parent="."]
 script = ExtResource("3_n6vr3")
 
-[node name="Bomb" type="AnimatedSprite2D" parent="Bomb"]
+[node name="Bomb" type="Sprite2D" parent="Bomb"]
 visible = false
-sprite_frames = SubResource("SpriteFrames_yv5w7")
+position = Vector2(-2.08616e-07, 2.08616e-07)
+texture = ExtResource("5_kqjkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
 shape = SubResource("CircleShape2D_geqy1")
