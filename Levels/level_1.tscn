@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://hxumoqi0wf5u"]
+[gd_scene load_steps=32 format=3 uid="uid://hxumoqi0wf5u"]
 
 [ext_resource type="PackedScene" uid="uid://xh6yp4d5802s" path="res://Levels/background.tscn" id="1_4056i"]
 [ext_resource type="Script" path="res://Levels/Enemies_1.gd" id="2_5yxem"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://BulletPattens/emit_dir_staggered_straight.gd" id="4_lqy13"]
 [ext_resource type="PackedScene" uid="uid://q4ca5to7f7tm" path="res://player.tscn" id="5_7nkj2"]
 [ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="6_pdbpd"]
+[ext_resource type="PackedScene" uid="uid://cty2ebpktltbj" path="res://mid_boss.tscn" id="7_h6uf4"]
 
 [sub_resource type="Curve2D" id="Curve2D_gyrlu"]
 _data = {
@@ -149,12 +150,12 @@ point_count = 5
 [node name="Level_1" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_4056i")]
-visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("2_5yxem")
 
 [node name="Group_1" type="Node2D" parent="Enemies"]
+visible = false
 position = Vector2(1344, 568)
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_1"]
@@ -194,6 +195,7 @@ shoot_timer_one_shot = false
 vel = 200
 
 [node name="Group_2" type="Node2D" parent="Enemies"]
+visible = false
 position = Vector2(1344, 568)
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_2"]
@@ -233,6 +235,7 @@ shoot_timer_one_shot = false
 vel = 200
 
 [node name="Group_3" type="Node2D" parent="Enemies"]
+visible = false
 position = Vector2(1344, 568)
 
 [node name="Path2D" type="Path2D" parent="Enemies/Group_3"]
@@ -592,6 +595,8 @@ rotation = -3.13741
 constant_shot = true
 shoot_timer_one_shot = false
 texture = 1
+
+[node name="MidBoss" parent="Enemies" instance=ExtResource("7_h6uf4")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1152, 0)
