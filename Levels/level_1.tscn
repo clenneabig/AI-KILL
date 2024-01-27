@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://hxumoqi0wf5u"]
+[gd_scene load_steps=31 format=3 uid="uid://hxumoqi0wf5u"]
 
 [ext_resource type="PackedScene" uid="uid://xh6yp4d5802s" path="res://Levels/background.tscn" id="1_4056i"]
 [ext_resource type="Script" path="res://Levels/Enemies_1.gd" id="2_5yxem"]
@@ -71,19 +71,19 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_2y7ph"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1560, 248, 14.9831, -14.9831, -14.9831, 14.9831, 448, 248, 0, 0, 0, 0, 144, 728, 0, 0, 0, 0, -104, 728)
+"points": PackedVector2Array(0, 0, 0, 0, 1560, 248, 14.9831, -14.9831, -14.9831, 14.9831, 448, 248, 0, 0, 0, 0, 144, 728, 0, 0, 0, 0, -464, 720)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_qxcrk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1208, 376, 56.9357, -5.99323, -56.9357, 5.99323, 704, 376, 0, 0, 0, 0, 448, 704, 0, 0, 0, 0, -104, 704)
+"points": PackedVector2Array(0, 0, 0, 0, 1208, 376, 56.9357, -5.99323, -56.9357, 5.99323, 704, 376, 0, 0, 0, 0, 448, 704, 0, 0, 0, 0, -360, 704)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_80nyn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1648, -32, 50.9424, -11.9865, -50.9424, 11.9865, 960, 576, 0, 0, 0, 0, -144, 576)
+"points": PackedVector2Array(0, 0, 0, 0, 1648, -32, 50.9424, -11.9865, -50.9424, 11.9865, 960, 576, 0, 0, 0, 0, -328, 576)
 }
 point_count = 3
 
@@ -111,12 +111,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_m6l88"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3272, 312, 95.8917, 0, -95.8917, 0, 272, 312, 0, 0, 0, 0, 64, 704, 0, 0, 0, 0, -128, 704)
-}
-point_count = 4
-
 [sub_resource type="Curve2D" id="Curve2D_7n6ba"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 2080, 1088, 0, 0, 0, 0, -264, -128)
@@ -131,19 +125,19 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_i0tsq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3264, 608, 104.882, 2.99661, -104.882, -2.99661, 952, 568, 95.8917, -2.99661, -95.8917, 2.99661, 640, 128, 0, 0, 0, 0, -128, 128)
+"points": PackedVector2Array(0, 0, 0, 0, 3264, 608, 104.882, 2.99661, -104.882, -2.99661, 952, 568, 95.8917, -2.99661, -95.8917, 2.99661, 640, 128, 0, 0, 0, 0, -312, 128)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_md86d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3200, 0, 0, 0, 0, 0, 2368, -8, 131.851, -11.9865, -131.851, 11.9865, 1024, 216, 0, 0, 0, 0, -80, 216)
+"points": PackedVector2Array(0, 0, 0, 0, 3200, 0, 0, 0, 0, 0, 2368, -8, 131.851, -11.9865, -131.851, 11.9865, 1024, 216, 0, 0, 0, 0, -416, 224)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_dhpbb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3064, 512, 0, 0, 0, 0, 1152, 504, 50.9424, -17.9797, -50.9424, 17.9797, 696, 504, 0, 0, 0, 0, 632, 704, 0, 0, 0, 0, -120, 696)
+"points": PackedVector2Array(0, 0, 0, 0, 3064, 512, 0, 0, 0, 0, 1152, 504, 50.9424, -17.9797, -50.9424, 17.9797, 696, 504, 0, 0, 0, 0, 632, 704, 0, 0, 0, 0, -464, 704)
 }
 point_count = 5
 
@@ -173,7 +167,6 @@ rotation = 3.1309
 
 [node name="Emit" parent="Enemies/Group_1/Path2D/PathFollow2D/Enemy1" index="0"]
 spawn_count = 12
-shoot_timer_one_shot = false
 vel = 200
 
 [node name="Enemy2" parent="Enemies/Group_1/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
@@ -182,7 +175,6 @@ rotation = 3.1309
 
 [node name="Emit" parent="Enemies/Group_1/Path2D/PathFollow2D/Enemy2" index="0"]
 spawn_count = 12
-shoot_timer_one_shot = false
 vel = 200
 
 [node name="Enemy3" parent="Enemies/Group_1/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
@@ -191,7 +183,6 @@ rotation = 3.1309
 
 [node name="Emit" parent="Enemies/Group_1/Path2D/PathFollow2D/Enemy3" index="0"]
 spawn_count = 12
-shoot_timer_one_shot = false
 vel = 200
 
 [node name="Group_2" type="Node2D" parent="Enemies"]
@@ -213,7 +204,6 @@ rotation = 3.1309
 
 [node name="Emit" parent="Enemies/Group_2/Path2D/PathFollow2D/Enemy1" index="0"]
 spawn_count = 12
-shoot_timer_one_shot = false
 vel = 200
 
 [node name="Enemy2" parent="Enemies/Group_2/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
@@ -222,7 +212,6 @@ rotation = 3.1309
 
 [node name="Emit" parent="Enemies/Group_2/Path2D/PathFollow2D/Enemy2" index="0"]
 spawn_count = 12
-shoot_timer_one_shot = false
 vel = 200
 
 [node name="Enemy3" parent="Enemies/Group_2/Path2D/PathFollow2D" instance=ExtResource("2_jb2pd")]
@@ -231,7 +220,6 @@ rotation = 3.1309
 
 [node name="Emit" parent="Enemies/Group_2/Path2D/PathFollow2D/Enemy3" index="0"]
 spawn_count = 12
-shoot_timer_one_shot = false
 vel = 200
 
 [node name="Group_3" type="Node2D" parent="Enemies"]
@@ -252,7 +240,6 @@ loop = false
 script = ExtResource("4_avv6x")
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 vel = 250
 
@@ -270,7 +257,6 @@ loop = false
 script = ExtResource("4_avv6x")
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 vel = 250
 texture = 1
@@ -289,7 +275,6 @@ loop = false
 script = ExtResource("4_avv6x")
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 vel = 250
 texture = 2
@@ -307,7 +292,6 @@ loop = false
 [node name="Emit" parent="Enemies/Group_3/Path2D4/PathFollow2D/Enemy1" index="0"]
 script = ExtResource("4_avv6x")
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 vel = 250
 texture = 3
@@ -326,7 +310,6 @@ loop = false
 script = ExtResource("4_avv6x")
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 vel = 250
 texture = 4
@@ -345,7 +328,6 @@ loop = false
 script = ExtResource("4_avv6x")
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 vel = 250
 texture = 5
@@ -364,7 +346,6 @@ loop = false
 script = ExtResource("4_avv6x")
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.4
 vel = 250
 texture = 6
@@ -385,7 +366,6 @@ script = ExtResource("4_lqy13")
 stg_wait_time = 0.1
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.4
 vel = 400
 
@@ -403,7 +383,6 @@ script = ExtResource("4_lqy13")
 stg_wait_time = 0.1
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.4
 vel = 400
 texture = 1
@@ -422,7 +401,6 @@ script = ExtResource("4_lqy13")
 stg_wait_time = 0.1
 spawn_count = 1
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.4
 vel = 400
 texture = 2
@@ -438,7 +416,6 @@ rotation = 2.41784
 
 [node name="Emit" parent="Enemies/Group_4/Path2D4/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 3
 
 [node name="Path2D5" type="Path2D" parent="Enemies/Group_4"]
@@ -452,7 +429,6 @@ rotation = 3.14159
 
 [node name="Emit" parent="Enemies/Group_4/Path2D5/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 4
 
 [node name="Path2D6" type="Path2D" parent="Enemies/Group_4"]
@@ -468,7 +444,6 @@ rotation = -2.79546
 script = ExtResource("6_pdbpd")
 spawn_count = 4
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.2
 texture = 7
 
@@ -483,7 +458,6 @@ rotation = 2.97644
 
 [node name="Emit" parent="Enemies/Group_4/Path2D7/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 wait_time = 0.3
 texture = 5
 
@@ -498,21 +472,7 @@ rotation = 3.14159
 
 [node name="Emit" parent="Enemies/Group_4/Path2D8/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 4
-
-[node name="Path2D9" type="Path2D" parent="Enemies/Group_4"]
-curve = SubResource("Curve2D_m6l88")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Group_4/Path2D9"]
-position = Vector2(3272, 312)
-rotation = 3.14159
-
-[node name="Enemy" parent="Enemies/Group_4/Path2D9/PathFollow2D" instance=ExtResource("2_jb2pd")]
-
-[node name="Emit" parent="Enemies/Group_4/Path2D9/PathFollow2D/Enemy" index="0"]
-constant_shot = true
-shoot_timer_one_shot = false
 
 [node name="Path2D10" type="Path2D" parent="Enemies/Group_4"]
 curve = SubResource("Curve2D_7n6ba")
@@ -525,7 +485,6 @@ rotation = -2.66304
 
 [node name="Emit" parent="Enemies/Group_4/Path2D10/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 8
 
 [node name="Path2D11" type="Path2D" parent="Enemies/Group_4"]
@@ -539,7 +498,6 @@ rotation = 3.14159
 
 [node name="Emit" parent="Enemies/Group_4/Path2D11/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 
 [node name="Path2D12" type="Path2D" parent="Enemies/Group_4"]
 curve = SubResource("Curve2D_edxs1")
@@ -552,7 +510,6 @@ rotation = 3.14159
 
 [node name="Emit" parent="Enemies/Group_4/Path2D12/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 
 [node name="Path2D13" type="Path2D" parent="Enemies/Group_4"]
 curve = SubResource("Curve2D_i0tsq")
@@ -565,7 +522,6 @@ rotation = -3.12429
 
 [node name="Emit" parent="Enemies/Group_4/Path2D13/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 3
 
 [node name="Path2D14" type="Path2D" parent="Enemies/Group_4"]
@@ -579,7 +535,6 @@ rotation = -3.13198
 
 [node name="Emit" parent="Enemies/Group_4/Path2D14/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 2
 
 [node name="Path2D15" type="Path2D" parent="Enemies/Group_4"]
@@ -593,10 +548,10 @@ rotation = -3.13741
 
 [node name="Emit" parent="Enemies/Group_4/Path2D15/PathFollow2D/Enemy" index="0"]
 constant_shot = true
-shoot_timer_one_shot = false
 texture = 1
 
 [node name="MidBoss" parent="Enemies" instance=ExtResource("7_h6uf4")]
+position = Vector2(1500, 327)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1152, 0)
@@ -626,7 +581,6 @@ position = Vector2(1152, 0)
 [editable path="Enemies/Group_4/Path2D6/PathFollow2D/Enemy"]
 [editable path="Enemies/Group_4/Path2D7/PathFollow2D/Enemy"]
 [editable path="Enemies/Group_4/Path2D8/PathFollow2D/Enemy"]
-[editable path="Enemies/Group_4/Path2D9/PathFollow2D/Enemy"]
 [editable path="Enemies/Group_4/Path2D10/PathFollow2D/Enemy"]
 [editable path="Enemies/Group_4/Path2D11/PathFollow2D/Enemy"]
 [editable path="Enemies/Group_4/Path2D12/PathFollow2D/Enemy"]

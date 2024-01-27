@@ -23,11 +23,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(inPos):
-		match CurrentState:
-			State.Healthy:
-				print("healthy")
-				emit_1._startShootin()
+	match CurrentState:
+		State.Healthy:
+			print("healthy")
+			if(inPos):
+				print("pos")
+				emit_1._startShootin()#FIX ME!!
 	if(global_position.x <= 0):
 		_offScreen()
 

@@ -70,16 +70,15 @@ func _process(delta):
 			var childrenNo = group3.get_child_count()-1
 			for path in group3.get_children():
 				path.get_child(0).progress += g_move_speed*2 * delta
-				print(childrenNo)
 				if(path.get_child(0).progress_ratio >= 1.0):
 					childrenNo-=1
 			if(childrenNo <= 0):
 				CurrentGroup = Groups.Group4
 		Groups.Group4:
-			var childrenNo = group4.get_child_count()-1
+			var childrenNo = group4.get_child_count()
 			for path in group4.get_children():
 				path.get_child(0).progress += g_move_speed*1.5 * delta
-				if(path.get_child(0).progress_ratio >= 1.0):
+				if(path.get_child(0).get_child_count() <= 0):
 					childrenNo-=1
 			if(childrenNo <= 0):
 				CurrentGroup = Groups.Mid_Boss
