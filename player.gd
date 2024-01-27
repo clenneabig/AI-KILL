@@ -13,11 +13,15 @@ var step
 var vel = 600
 var wait_time = 0.2
 
+var ShootTime = Timer.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_child(ShootTime)
+	ShootTime.timeout.connect(_on_shoot_time_timeout)
 	screen_size = get_viewport_rect().size
-	$ShootTime.wait_time = wait_time
-	$ShootTime.start()
+	ShootTime.wait_time = wait_time
+	ShootTime.start()
 
 func start(pos):
 	position = origin
@@ -57,9 +61,9 @@ func _process(delta):
 		bullets = not bullets
 
 	if bullets:
-		$ShootTime.set_paused(false)
+		ShootTime.set_paused(false)
 	elif not bullets:
-		$ShootTime.set_paused(true)
+		ShootTime.set_paused(true)
 		
 
 
@@ -80,8 +84,7 @@ func _on_area_entered(area):
 			game_over.emit()
 		hide() # Player disappears after being hit. #player needs to appear again lol
 		
-	# Must be deferred as we can't change physics properties on a physics callback.
-		if not $SpriteBox.is_invincible:
+		if not $SpriteBox.disabled:
 			respawn()
 	#$GrazeBox.set_deferred("disabled", true)
 
@@ -93,8 +96,8 @@ func _on_graze_area_area_entered(area):
 
 
 func _on_shoot_time_timeout():
-	$ShootTime.wait_time = wait_time
-	$ShootTime.start()
+	ShootTime.wait_time = wait_time
+	ShootTime.start()
 	_shoot(vel)
 
 func respawn():

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bj7gc4vcf2tcy"]
 
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_3l5mm"]
-[ext_resource type="Texture2D" uid="uid://ccwbmdjl7hjxb" path="res://assets/background.png" id="1_gshs1"]
-[ext_resource type="PackedScene" uid="uid://d1nt2v7peffn5" path="res://power_up.tscn" id="1_qds1o"]
+[ext_resource type="Texture2D" uid="uid://dwjghaxfbjjg5" path="res://assets/background.png" id="1_gshs1"]
+[ext_resource type="PackedScene" path="res://power_up.tscn" id="1_qds1o"]
 [ext_resource type="PackedScene" uid="uid://dmld4sshhilmo" path="res://player.tscn" id="3_owqlb"]
 [ext_resource type="PackedScene" uid="uid://ps613f6vc702" path="res://enemy.tscn" id="4_dxfl4"]
 
@@ -21,6 +21,7 @@ motion_mirroring = Vector2(3488, 0)
 offset_right = 3488.0
 offset_bottom = 654.0
 texture = ExtResource("1_gshs1")
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_owqlb")]
 position = Vector2(50, 350)

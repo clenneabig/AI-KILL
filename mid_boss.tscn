@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpu2i608sov4l"]
+
+[ext_resource type="Texture2D" uid="uid://b68kxgwywhw5q" path="res://assets/enemies/enemy2_spritesheet.png" id="1_74bk7"]
+[ext_resource type="Script" path="res://mid_boss.gd" id="1_o77xn"]
+[ext_resource type="PackedScene" uid="uid://qjrut43w7wo0" path="res://BulletPattens/emit.tscn" id="3_4fxtj"]
+[ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="3_eqx4u"]
+[ext_resource type="Script" path="res://BulletPattens/bullet_emitter.gd" id="4_qi1k8"]
+[ext_resource type="Script" path="res://BulletPattens/emit_deccelerated.gd" id="5_t23j8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apacy"]
+atlas = ExtResource("1_74bk7")
+region = Rect2(0, 0, 81, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq6en"]
+atlas = ExtResource("1_74bk7")
+region = Rect2(81, 0, 81, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghndi"]
+atlas = ExtResource("1_74bk7")
+region = Rect2(162, 0, 81, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k8vb"]
+atlas = ExtResource("1_74bk7")
+region = Rect2(243, 0, 81, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgln6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apacy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq6en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghndi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k8vb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwkv4"]
+size = Vector2(32.3333, 17)
+
+[node name="MidBoss" type="Area2D"]
+script = ExtResource("1_o77xn")
+
+[node name="Emit" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+script = ExtResource("3_eqx4u")
+wait_time = 0.1
+vel = 200
+texture = 7
+Current_Rotation = 1
+
+[node name="Emit2" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+script = ExtResource("4_qi1k8")
+spawn_count = 12
+wait_time = 4.0
+vel = 200
+cycle = true
+Current_Rotation = 0
+
+[node name="Emit3" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+script = ExtResource("5_t23j8")
+spawn_count = 1
+wait_time = 0.1
+vel = 500
+texture = 1
+Current_Rotation = 2
+
+[node name="Emit4" parent="." instance=ExtResource("3_4fxtj")]
+position = Vector2(-17, 24)
+wait_time = 0.1
+vel = 400
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bgln6")
+frame_progress = 0.668432
+
+[node name="SpriteBox" type="CollisionShape2D" parent="."]
+position = Vector2(-16.5, 22.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_pwkv4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
