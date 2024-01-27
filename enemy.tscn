@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://brskhjplhpctm"]
+[gd_scene load_steps=11 format=3 uid="uid://ps613f6vc702"]
 
-[ext_resource type="Texture2D" uid="uid://hgs3jb8sm8bl" path="res://assets/enemies/enemy1_spritesheet.png" id="1_4eeom"]
+[ext_resource type="Texture2D" uid="uid://cho3vclgvkfot" path="res://assets/enemies/enemy1_spritesheet.png" id="1_4eeom"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_io0xw"]
 [ext_resource type="PackedScene" uid="uid://qjrut43w7wo0" path="res://BulletPattens/emit.tscn" id="2_tqi7x"]
 [ext_resource type="Script" path="res://BulletPattens/bullet_emitter.gd" id="3_vyqkx"]

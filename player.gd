@@ -7,16 +7,19 @@ signal game_over
 var screen_size
 var health = 3
 var bullets = true
+var origin = Vector2(50, 350)
+var is_invincible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 
 func start(pos):
-	position = pos
+	position = origin
 	show()
 	$SpriteBox.disabled = false
-	$GrazeBox.disabled = false
+	$GrazeArea.monitoring = true
+	$GrazeArea.monitorable = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -47,22 +50,6 @@ func _process(delta):
 	#if Input.is_action_pressed("toggle_bullets"):
 		#bullets = not bullets
 
-
-func _on_body_entered(body): #useless delete probably
-	print(body)
-	#print("ouch")
-	health -= 1
-	if health <= 0:
-		print("deaded")
-		game_over.emit()
-	hide() # Player disappears after being hit.
-	hit.emit()
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$SpriteBox.set_deferred("disabled", true)
-	$GrazeBox.set_deferred("disabled", true)
-
-
-
 func _on_area_entered(area):
 	print(area)
 	if area.is_in_group("Bullet"): #or enemy
@@ -74,7 +61,8 @@ func _on_area_entered(area):
 		hide() # Player disappears after being hit. #player needs to appear again lol
 		
 	# Must be deferred as we can't change physics properties on a physics callback.
-		$SpriteBox.set_deferred("disabled", true)
+		if not $SpriteBox.is_invincible:
+			respawn()
 	#$GrazeBox.set_deferred("disabled", true)
 
 
@@ -82,3 +70,11 @@ func _on_graze_area_area_entered(area):
 	if area.is_in_group("Bullet"):
 		if(self.is_visible()):
 			print("add to style points")
+
+
+func respawn():
+	position = origin
+	$GrazeArea.set_deferred("monitoring", true)
+	$GrazeArea.set_deferred("monitorable", true)
+	$Blinker.start_blinking(self, 3)
+	$SpriteBox.invincible(3)

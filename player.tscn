@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://q4ca5to7f7tm"]
+[gd_scene load_steps=18 format=3 uid="uid://dmld4sshhilmo"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ddabx"]
 [ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="1_dihwr"]
 [ext_resource type="Texture2D" uid="uid://b4e1b1jgn7nup" path="res://assets/aiplayer_spritesheet.png" id="2_6h5vl"]
+[ext_resource type="Script" path="res://SpriteBox.gd" id="3_77htn"]
 [ext_resource type="Script" path="res://bomb.gd" id="3_n6vr3"]
+[ext_resource type="PackedScene" uid="uid://bpjs00j7t4ni7" path="res://blinker.tscn" id="5_hns8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5713"]
 size = Vector2(97, 45)
@@ -92,6 +94,7 @@ sprite_frames = SubResource("SpriteFrames_vsppu")
 [node name="SpriteBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jdvj1")
 debug_color = Color(0.976471, 0, 0.211765, 0.419608)
+script = ExtResource("3_77htn")
 
 [node name="Bomb" type="Area2D" parent="."]
 visible = false
@@ -111,8 +114,9 @@ offset_top = -52.0
 offset_right = 50.0
 offset_bottom = -25.0
 
+[node name="Blinker" parent="." instance=ExtResource("5_hns8k")]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="bomb" from="." to="Bomb" method="_on_player_bomb"]
 [connection signal="area_entered" from="GrazeArea" to="." method="_on_graze_area_area_entered"]
 [connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]
