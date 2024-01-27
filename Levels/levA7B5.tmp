@@ -547,9 +547,7 @@ rotation = -3.13741
 constant_shot = true
 texture = 1
 
-[node name="MidHolder" type="Node2D" parent="Enemies"]
-
-[node name="MidBoss" parent="Enemies/MidHolder" instance=ExtResource("7_h6uf4")]
+[node name="MidBoss" parent="Enemies" instance=ExtResource("7_h6uf4")]
 position = Vector2(1500, 327)
 
 [node name="Marker2D" type="Marker2D" parent="."]

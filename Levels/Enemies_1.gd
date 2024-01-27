@@ -4,7 +4,8 @@ extends Node2D
 @onready var group2 = $Group_2/Path2D/PathFollow2D
 @onready var group3 = $Group_3
 @onready var group4 = $Group_4
-@onready var MidBoss = $MidBoss
+@onready var MidBoss = $MidHolder/MidBoss
+@onready var MidHold = $MidHolder
 
 
 var g_move_speed = 150.0
@@ -21,7 +22,7 @@ enum Groups{
 	Group6,
 	Boss
 }
-var CurrentGroup = Groups.Group1
+var CurrentGroup = Groups.Mid_Boss
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -83,4 +84,17 @@ func _process(delta):
 			if(childrenNo <= 0):
 				CurrentGroup = Groups.Mid_Boss
 		Groups.Mid_Boss:
-			MidBoss.move_to_centre()
+			if(MidHold.get_child_count() != 0):
+				if(not MidBoss.inPos):
+					MidBoss.move_to_centre()
+			if MidHold.get_child_count() <= 0:
+				var t =Timer.new()
+				t.wait_time = 3.0
+				t.one_shot = true
+				add_child(t)
+				t.start()
+				await(t.timeout)
+				t.queue_free()
+				CurrentGroup = Groups.Group5
+		Groups.Group5:
+			pass

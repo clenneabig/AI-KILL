@@ -87,6 +87,7 @@ func _rotate(r:float):
 	rotate(r)
 	
 func _startShootin():
+	shoot_timer.wait_time = wait_time
 	shoot_timer.start()
 func _stopShootin():
 	shoot_timer.stop()

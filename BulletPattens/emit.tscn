@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://qjrut43w7wo0"]
+[gd_scene load_steps=3 format=3 uid="uid://qjrut43w7wo0"]
 
-[ext_resource type="Script" path="res://BulletPattens/bullet_emitter.gd" id="1_gpvcm"]
+[ext_resource type="Script" path="res://BulletPattens/emit_dir_straight.gd" id="1_e0ngi"]
+[ext_resource type="Texture2D" uid="uid://df26ulj8gxrtx" path="res://icon.svg" id="2_0hkbj"]
 
 [node name="Emit" type="Marker2D"]
-script = ExtResource("1_gpvcm")
+script = ExtResource("1_e0ngi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_0hkbj")
 
 [node name="ShootTime" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(-60, 3)
+target_position = Vector2(-64, 0)
 
 [connection signal="timeout" from="ShootTime" to="." method="_on_shoot_time_timeout"]
