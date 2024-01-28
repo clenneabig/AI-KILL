@@ -1,7 +1,7 @@
 extends Emitter
 
 var stg_timer = Timer.new()
-@export var stg_wait_time = 1
+@export var stg_wait_time = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
