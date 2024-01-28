@@ -28,5 +28,5 @@ position = Vector2(50, 350)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Enemies" groups=["Enemy"] instance=ExtResource("4_dxfl4")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_dxfl4")]
 position = Vector2(709, 343)

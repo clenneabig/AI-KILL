@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://BulletPattens/emit_dir_staggered_straight.gd" id="4_lqy13"]
 [ext_resource type="PackedScene" uid="uid://dmld4sshhilmo" path="res://player.tscn" id="5_7nkj2"]
 [ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="6_pdbpd"]
-[ext_resource type="PackedScene" uid="uid://cpu2i608sov4l" path="res://mid_boss.tscn" id="7_h6uf4"]
-[ext_resource type="PackedScene" uid="uid://d3eicj07hpex5" path="res://boss.tscn" id="8_53u7q"]
+[ext_resource type="PackedScene" uid="uid://bs6yar7840053" path="res://mid_boss.tscn" id="7_h6uf4"]
+[ext_resource type="PackedScene" path="res://boss.tscn" id="8_53u7q"]
 
 [sub_resource type="Curve2D" id="Curve2D_gyrlu"]
 _data = {
