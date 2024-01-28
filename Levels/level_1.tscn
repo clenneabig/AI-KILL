@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmld4sshhilmo" path="res://player.tscn" id="5_7nkj2"]
 [ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="6_pdbpd"]
 [ext_resource type="PackedScene" uid="uid://bs6yar7840053" path="res://mid_boss.tscn" id="7_h6uf4"]
-[ext_resource type="PackedScene" uid="uid://d3eicj07hpex5" path="res://boss.tscn" id="8_53u7q"]
+[ext_resource type="PackedScene" uid="uid://ccjoh8qlw7dif" path="res://boss.tscn" id="8_53u7q"]
 
 [sub_resource type="Curve2D" id="Curve2D_gyrlu"]
 _data = {
@@ -874,7 +874,7 @@ volume_db = -10.0
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(700, 500)
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("5_7nkj2")]
+[node name="Player" parent="." instance=ExtResource("5_7nkj2")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
 volume_db = -20.0

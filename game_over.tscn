@@ -1,36 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfeo3kawurjrk"]
+[gd_scene load_steps=15 format=3 uid="uid://cdeldvbrf2yor"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_xefua"]
+[ext_resource type="Texture2D" uid="uid://khoaq7txuhva" path="res://assets/gameoverui/gameover2.png" id="2_4pvj5"]
+[ext_resource type="Texture2D" uid="uid://chwsmcaiaaiy" path="res://assets/gameoverui/restartbutton.png" id="3_f4vqa"]
+[ext_resource type="Texture2D" uid="uid://qj0nqwi5bo3u" path="res://assets/gameoverui/restartbuttonpush.png" id="4_c5hec"]
+[ext_resource type="Texture2D" uid="uid://buunyikfilecr" path="res://assets/gameoverui/returnbutton.png" id="5_wahwc"]
+[ext_resource type="Texture2D" uid="uid://bxs1w2vj6a5pg" path="res://assets/gameoverui/returnbuttonpush.png" id="6_spv53"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfgjf"]
+texture = ExtResource("3_f4vqa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_duob8"]
+texture = ExtResource("4_c5hec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75flv"]
+texture = ExtResource("4_c5hec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ahxf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snlln"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cipjv"]
+texture = ExtResource("5_wahwc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1wis"]
+texture = ExtResource("6_spv53")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2tg70"]
+texture = ExtResource("6_spv53")
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(11.2681, 6.33862)
+anchors_preset = 0
 script = ExtResource("1_xefua")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4pvj5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 0
+offset_left = 504.0
+offset_top = 336.0
+offset_right = 644.0
+offset_bottom = 524.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Game Over"
 
 [node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-text = "Restart"
+theme_override_styles/normal = SubResource("StyleBoxTexture_tfgjf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_duob8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75flv")
+text = " "
+
+[node name="Play2" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxTexture_1ahxf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_snlln")
+disabled = true
+text = " "
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-text = "Quit
+theme_override_styles/normal = SubResource("StyleBoxTexture_cipjv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_y1wis")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2tg70")
+text = "
 "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

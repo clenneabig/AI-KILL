@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://fxryy32lwu11"]
+[gd_scene load_steps=4 format=3 uid="uid://yvg553v283wt"]
+
+[ext_resource type="Texture2D" uid="uid://rjdotgeuclie" path="res://assets/credits.png" id="1_62jte"]
+[ext_resource type="Script" path="res://credits.gd" id="1_wys55"]
+[ext_resource type="Texture2D" uid="uid://b5n6m1sffp8o2" path="res://assets/AI_splash_1.png" id="3_vsm6d"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -7,15 +11,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wys55")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_62jte")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_vsm6d")
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "We made da game"
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 600.0
+offset_right = 1125.0
+offset_bottom = 631.0
+text = "Back"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1091.0
+offset_top = 560.0
+offset_right = 1125.0
+offset_bottom = 591.0
+text = "  >  "
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

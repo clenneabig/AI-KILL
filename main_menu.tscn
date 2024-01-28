@@ -1,7 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr17ccssrdcws"]
+[gd_scene load_steps=15 format=3 uid="uid://cr17ccssrdcws"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_octwd"]
 [ext_resource type="Texture2D" uid="uid://c0kfh7j22uvn5" path="res://assets/menuimg.png" id="2_r4kk4"]
+[ext_resource type="Texture2D" uid="uid://d2clnxr5mhqmt" path="res://assets/startbutton.png" id="3_04xln"]
+[ext_resource type="Texture2D" uid="uid://b7n6vbxa6y5fr" path="res://assets/startbuttonpush.png" id="4_vjmh7"]
+[ext_resource type="Texture2D" uid="uid://dqkoa3tfwv1jn" path="res://assets/creditsbutton.png" id="5_1x7f2"]
+[ext_resource type="Texture2D" uid="uid://cdjw1foyvsxwh" path="res://assets/creditsbuttonpush.png" id="6_odvar"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey5bo"]
+texture = ExtResource("3_04xln")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvrgv"]
+texture = ExtResource("4_vjmh7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eghc6"]
+texture = ExtResource("4_vjmh7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ie7ba"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7kp2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_os1xl"]
+texture = ExtResource("5_1x7f2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pval"]
+texture = ExtResource("6_odvar")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n20qx"]
+texture = ExtResource("6_odvar")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,31 +48,37 @@ texture = ExtResource("2_r4kk4")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 136.0
-offset_top = 304.0
-offset_right = 199.0
-offset_bottom = 405.0
-scale = Vector2(2.64323, 2.39782)
+offset_top = 344.0
+offset_right = 350.0
+offset_bottom = 628.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-text = "Play"
+theme_override_styles/normal = SubResource("StyleBoxTexture_ey5bo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tvrgv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eghc6")
+text = " "
 
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
-visible = false
+[node name="Play2" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Settings"
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ie7ba")
+theme_override_styles/focus = SubResource("StyleBoxTexture_l7kp2")
+disabled = true
+text = " "
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-text = "Credits"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
+theme_override_styles/normal = SubResource("StyleBoxTexture_os1xl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4pval")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n20qx")
+text = " "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
