@@ -11,8 +11,8 @@ var bullet_scene = preload("res://playerbullet.tscn")
 var step
 var vel = 600
 var wait_time = 0.2
-var score = 0
-var power = 0
+var powercap = 0
+var powerlevel = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,15 +66,78 @@ func _process(delta):
 		$ShootTime.set_paused(false)
 	elif not bullets:
 		$ShootTime.set_paused(true)
+		
+	if (powercap >= 5):
+		powerlevel+=1
+		powercap = 0
+	
 
 
 
-func _shoot(vel):
-	var nb = bullet_scene.instantiate()
-	nb.speed = Vector2(vel, 0)
-	nb.position = position
-	nb.rotation = rotation
-	get_parent().add_child(nb)
+func _shoot(vel): #there is likely a better way to do this, but im the artist, not the programmer, teehee
+	if not Input.is_action_pressed("focus_mode"):
+		if(powerlevel >= 1):
+			var nb = bullet_scene.instantiate()
+			nb.speed = Vector2(vel, 0)
+			nb.position = position
+			nb.rotation = rotation
+			get_parent().add_child(nb)
+		if(powerlevel >= 2):
+			var nb2 = bullet_scene.instantiate()
+			var nb3 = bullet_scene.instantiate()
+			nb2.speed = Vector2(vel-50, 50)
+			nb3.speed = Vector2(vel-50,-50)
+			nb2.position = Vector2(position.x-3, position.y + 10)
+			nb3.position = Vector2(position.x-3, position.y - 10)
+			nb2.rotation = rotation + 0.1
+			nb3.rotation = rotation - 0.1
+			nb2.bullettype = 2
+			nb3.bullettype = 2
+			get_parent().add_child(nb2)
+			get_parent().add_child(nb3)
+		if(powerlevel >= 3):
+			var nb4 = bullet_scene.instantiate()
+			var nb5 = bullet_scene.instantiate()
+			nb4.speed = Vector2(vel-100, 100)
+			nb5.speed = Vector2(vel-100,-100)
+			nb4.position = Vector2(position.x-8, position.y + 20)
+			nb5.position = Vector2(position.x-8, position.y - 20)
+			nb4.rotation = rotation + 0.2
+			nb5.rotation = rotation - 0.2
+			nb4.bullettype = 3
+			nb5.bullettype = 3
+			get_parent().add_child(nb4)
+			get_parent().add_child(nb5)
+	else:
+		if(powerlevel >= 1):
+			var nb = bullet_scene.instantiate()
+			nb.speed = Vector2(vel, 0)
+			nb.position = position
+			nb.rotation = rotation
+			get_parent().add_child(nb)
+		if(powerlevel >= 2):
+			var nb2 = bullet_scene.instantiate()
+			var nb3 = bullet_scene.instantiate()
+			nb2.speed = Vector2(vel,0)
+			nb3.speed = Vector2(vel,0)
+			nb2.position = Vector2(position.x-3, position.y + 10)
+			nb3.position = Vector2(position.x-3, position.y - 10)
+			nb2.bullettype = 2
+			nb3.bullettype = 2
+			get_parent().add_child(nb2)
+			get_parent().add_child(nb3)
+		if(powerlevel >= 3):
+			var nb4 = bullet_scene.instantiate()
+			var nb5 = bullet_scene.instantiate()
+			nb4.speed = Vector2(vel,0)
+			nb5.speed = Vector2(vel,0)
+			nb4.position = Vector2(position.x-8, position.y + 20)
+			nb5.position = Vector2(position.x-8, position.y - 20)
+			nb4.bullettype = 3
+			nb5.bullettype = 3
+			get_parent().add_child(nb4)
+			get_parent().add_child(nb5)
+		
 
 
 func _on_area_entered(area):
