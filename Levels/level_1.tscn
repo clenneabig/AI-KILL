@@ -868,6 +868,9 @@ texture = 6
 [node name="Boss" parent="Enemies/BossHolder" instance=ExtResource("8_53u7q")]
 position = Vector2(1880, 312)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Enemies/BossHolder/Boss"]
+volume_db = -10.0
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(700, 500)
 

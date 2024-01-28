@@ -12,6 +12,8 @@ var notShooting = true
 var moveUp = false
 var moveDown = false
 
+var deathsfx = preload("res://assets/sfx/bossexplosion_owlstorm.wav")
+
 enum State{
 	Healthy,
 	Damaged_1,
@@ -117,6 +119,8 @@ func _on_area_entered(area):
 		health -= 20
 		area.queue_free()
 		if(health <= 0):
+			$AudioStreamPlayer.stream = deathsfx
+			$AudioStreamPlayer.play()
 			_turn_to_point()
 			_offScreen()
 			
