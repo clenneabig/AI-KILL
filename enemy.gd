@@ -1,12 +1,13 @@
 extends Area2D
 
 @onready var emit = $Emit
+@onready var sb = $SpriteBox
 @export var health = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
-
+	sb.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
