@@ -11,7 +11,8 @@ var bullet_scene = preload("res://playerbullet.tscn")
 var step
 var vel = 600
 var wait_time = 0.2
-var powercap = 0
+var score = 0
+var power = 0
 var powerlevel = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -67,9 +68,9 @@ func _process(delta):
 	elif not bullets:
 		$ShootTime.set_paused(true)
 		
-	if (powercap >= 5):
+	if (power >= 5):
 		powerlevel+=1
-		powercap = 0
+		power = 0
 	
 
 
