@@ -119,6 +119,7 @@ func _on_area_entered(area):
 		if(health <= 0):
 			_turn_to_point()
 			_offScreen()
+			get_tree().change_scene_to_file("res://game_over.tscn")
 			
 func _turn_to_point():
 	print("implement me!!")
