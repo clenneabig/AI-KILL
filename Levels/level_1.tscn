@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://hxumoqi0wf5u"]
+[gd_scene load_steps=41 format=3 uid="uid://hxumoqi0wf5u"]
 
 [ext_resource type="PackedScene" uid="uid://xh6yp4d5802s" path="res://Levels/background.tscn" id="1_4056i"]
+[ext_resource type="AudioStream" uid="uid://yw2u61oy5pqe" path="res://assets/sfx/KILL.mp3" id="1_xj0sh"]
 [ext_resource type="Script" path="res://Levels/Enemies_1.gd" id="2_5yxem"]
 [ext_resource type="PackedScene" uid="uid://ps613f6vc702" path="res://enemy.tscn" id="2_jb2pd"]
 [ext_resource type="Script" path="res://BulletPattens/emit_accelerated.gd" id="4_avv6x"]
@@ -191,6 +192,10 @@ _data = {
 point_count = 8
 
 [node name="Level_1" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_xj0sh")
+autoplay = true
 
 [node name="Background" parent="." instance=ExtResource("1_4056i")]
 
