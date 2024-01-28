@@ -192,6 +192,7 @@ _data = {
 point_count = 8
 
 [node name="Level_1" type="Node2D"]
+process_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_xj0sh")

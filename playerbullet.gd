@@ -43,3 +43,11 @@ func textchang():
 	if(bullettype == 3):
 		if(sprite != bt3):
 			sprite.texture = bt3
+
+func freedom():
+	self.speed = Vector2(0, 0)
+	$Sprite2D.hide()
+	$AnimatedSprite2D.play()
+	$CollisionShape2D.disabled = true
+	await($AnimatedSprite2D.animation_finished)
+	queue_free()

@@ -19,6 +19,7 @@ var powerlevel = 1
 
 @onready var UI = $CanvasLayer
 @onready var bar = $ProgressBar
+@onready var gmo = $CanvasLayer2
 #sounds
 var powerupsfx = preload("res://assets/sfx/levelup_joaojanz.wav")
 var shootsfx  = preload("res://assets/sfx/playerbulletfire_hootavi.wav")
@@ -172,7 +173,9 @@ func _on_area_entered(area):
 		UI.updateHealth();
 		hit.emit()
 		if health <= 0:
-			get_tree().change_scene_to_file("res://game_over.tscn")
+			#get_tree().change_scene_to_file("res://game_over.tscn")
+			gmo.gameover(false)
+			get_tree().paused = true
 		hide() # Player disappears after being hit. #player needs to appear again lol
 		
 	# Must be deferred as we can't change physics properties on a physics callback.

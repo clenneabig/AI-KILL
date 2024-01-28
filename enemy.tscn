@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ps613f6vc702"]
 
-[ext_resource type="Texture2D" uid="uid://cho3vclgvkfot" path="res://assets/enemies/enemy1_spritesheet.png" id="1_4eeom"]
+[ext_resource type="Texture2D" uid="uid://hgs3jb8sm8bl" path="res://assets/enemies/enemy1_spritesheet.png" id="1_4eeom"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_io0xw"]
 [ext_resource type="PackedScene" uid="uid://qjrut43w7wo0" path="res://BulletPattens/emit.tscn" id="2_tqi7x"]
 
@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdvj1"]
-size = Vector2(33, 18)
+size = Vector2(33, 23)
 
 [node name="Enemy" type="Area2D" groups=["Enemy"]]
 script = ExtResource("1_io0xw")
@@ -55,7 +55,7 @@ sprite_frames = SubResource("SpriteFrames_vsppu")
 animation = &"idle"
 
 [node name="SpriteBox" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, 7)
+position = Vector2(-5.5, 7.5)
 shape = SubResource("RectangleShape2D_jdvj1")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -21,6 +21,7 @@ func _offScreen():
 func _on_area_entered(area):
 	if area.is_in_group("Player_Bullet"): #or enemy
 		if(global_position.x < 1152):
+			area.freedom()
 			health -= 1
 			if(health <= 0):
 				var random_chance = randi() % 100

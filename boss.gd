@@ -5,6 +5,8 @@ extends Area2D
 @onready var emit_3 = $Emit3
 @onready var emit_4 = $Emit4
 
+@onready var Player = get_tree().get_nodes_in_group("Player")[0]
+
 @export var health = 6000
 var inPos = false
 var notShooting = true
@@ -122,8 +124,19 @@ func _on_area_entered(area):
 			$AudioStreamPlayer.stream = deathsfx
 			$AudioStreamPlayer.play()
 			_turn_to_point()
+			self.hide()
+			var t =Timer.new()
+			t.wait_time = 2.0
+			t.one_shot = true
+			add_child(t)
+			t.start()
+			await(t.timeout)
+			t.queue_free()
+			Player.gmo.show()
+			Player.gmo.gameover(true)
+			get_tree().paused = true
 			_offScreen()
-			get_tree().change_scene_to_file("res://game_over.tscn")
+			
 			
 func _turn_to_point():
 	print("implement me!!")
