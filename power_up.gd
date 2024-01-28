@@ -5,6 +5,7 @@ var screen_size
 var left_vel = Vector2.ZERO
 var ended = false
 var cooldown = randf_range(0.5, 1.5)
+var type
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -48,9 +49,25 @@ func _process(delta):
 
 func _on_area_entered(area:Area2D):
 	if area.name == 'Player':
-		area.get_node('ProgressBar').value += 100
+		match type:
+			0: area.get_node('ProgressBar').value += 10
+			3: area.get_node('ProgressBar').value += 20
+			1: area.score += 100
+			4: area.score += 500
+			2: area.power += 1
+			5: area.power += 2
 		queue_free()
 
+
+func _set_variables(t):
+	type = t
+	match type:
+		0: $BombSmall.visible = true
+		1: $CashSmall.visible = true
+		2: $PowerSmall.visible = true
+		3: $BombLarge.visible = true
+		4: $CashLarge.visible = true
+		5: $PowerLarge.visible = true
 
 func _on_timer_timeout():
 	ended = true

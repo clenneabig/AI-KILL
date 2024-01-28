@@ -11,6 +11,8 @@ var bullet_scene = preload("res://playerbullet.tscn")
 var step
 var vel = 600
 var wait_time = 0.2
+var score = 0
+var power = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

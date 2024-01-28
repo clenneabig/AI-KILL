@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1nt2v7peffn5"]
+[gd_scene load_steps=9 format=3 uid="uid://d1nt2v7peffn5"]
 
 [ext_resource type="Script" path="res://power_up.gd" id="1_ic2u2"]
+[ext_resource type="Texture2D" uid="uid://ct4cm6uyxl53r" path="res://assets/points/bombpoint_small.png" id="2_mcruo"]
 [ext_resource type="Texture2D" uid="uid://ckrn1o24p2ibb" path="res://assets/points/bombpoint_large.png" id="2_xn75k"]
+[ext_resource type="Texture2D" uid="uid://ckpqbfph3q5ht" path="res://assets/points/point_small.png" id="4_785wy"]
+[ext_resource type="Texture2D" uid="uid://dw4pd3q7wlyf8" path="res://assets/points/point_large.png" id="5_s2xpf"]
+[ext_resource type="Texture2D" uid="uid://bichu1tkwniey" path="res://assets/points/powerpoint_small.png" id="6_gwle0"]
+[ext_resource type="Texture2D" uid="uid://cfd2uo8icbeli" path="res://assets/points/powerpoint_large.png" id="7_a8lu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6my2"]
 size = Vector2(121, 126)
@@ -9,16 +14,32 @@ size = Vector2(121, 126)
 [node name="PowerUp" type="Area2D"]
 script = ExtResource("1_ic2u2")
 
-[node name="Bomb" type="Sprite2D" parent="."]
+[node name="BombSmall" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_mcruo")
+
+[node name="BombLarge" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_xn75k")
+
+[node name="CashSmall" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_785wy")
+
+[node name="CashLarge" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_s2xpf")
+
+[node name="PowerSmall" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_gwle0")
+
+[node name="PowerLarge" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_a8lu7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_w6my2")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

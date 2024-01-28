@@ -37,18 +37,16 @@ func make_powerup(bullet):
 	var powerup_scene = preload("res://power_up.tscn")
 	var powerup = powerup_scene.instantiate()
 	get_tree().root.add_child(powerup)
-	powerup.position = bullet.position
+	var random_chance = randi() % 100
+	if random_chance <= 75:
+		powerup._set_variables(1)
+	else:
+		powerup._set_variables(4)
+	powerup.global_position = bullet.global_position
 
 func _on_area_entered(area:Area2D):
 	if area.is_in_group("Enemy"):
+		area._turn_to_power()
 		area.queue_free()
-
-	# elif area.is_in_group("Bullet"):
-	# 	var powerup_scene = preload("res://power_up.tscn")
-	# 	var powerup = powerup_scene.instantiate()
-	# 	get_tree().root.add_child(powerup)
-	# 	powerup.position = area.position
-	# 	area.queue_free()
-
 	elif area.is_in_group("Boss"):
 		area.health -= 100

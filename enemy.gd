@@ -22,8 +22,14 @@ func _on_area_entered(area):
 		if(global_position.x < 1152):
 			health -= 1
 			if(health <= 0):
+				var random_chance = randi() % 100
 				_turn_to_power()
 				_offScreen()
 			
 func _turn_to_power():
-	print ("Implement me!!")
+	var powerup_scene = preload("res://power_up.tscn")
+	var powerup = powerup_scene.instantiate()
+	get_tree().root.add_child(powerup)
+	var random_power = randi() % 6
+	powerup._set_variables(random_power)
+	powerup.global_position = global_position
