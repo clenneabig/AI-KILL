@@ -15,6 +15,11 @@ var score = 0
 var power = 0
 var powerlevel = 1
 
+#sounds
+var powerupsfx = preload("res://assets/sfx/levelup_joaojanz.wav")
+var shootsfx  = preload("res://assets/sfx/playerbulletfire_hootavi.wav")
+var hurtsfx  = preload("res://assets/sfx/playerdeath_matrixxx_.wav")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -71,6 +76,8 @@ func _process(delta):
 	if (power >= 5):
 		powerlevel+=1
 		power = 0
+		$AudioStreamPlayer.stream = powerupsfx
+		$AudioStreamPlayer.play()
 	
 
 
@@ -138,11 +145,17 @@ func _shoot(vel): #there is likely a better way to do this, but im the artist, n
 			nb5.bullettype = 3
 			get_parent().add_child(nb4)
 			get_parent().add_child(nb5)
+			
+			
+	$AudioStreamPlayer.stream = shootsfx
+	$AudioStreamPlayer.play()
 		
 
 
 func _on_area_entered(area):
 	if area.is_in_group("Bullet"): #or enemy
+		$AudioStreamPlayer.stream = hurtsfx
+		$AudioStreamPlayer.play()
 		health -= 1
 		hit.emit()
 		if health <= 0:
