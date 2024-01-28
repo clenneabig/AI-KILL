@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsqjxv1ygiyxa"]
+[gd_scene load_steps=3 format=3 uid="uid://b6sqfol2os66e"]
 
 [ext_resource type="VideoStream" path="res://assets/aikillintro_3.ogv" id="1_0m5np"]
 [ext_resource type="Script" path="res://Cutscene.gd" id="1_sn7qc"]
