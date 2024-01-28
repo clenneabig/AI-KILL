@@ -133,7 +133,6 @@ offset_left = -47.0
 offset_top = -52.0
 offset_right = 50.0
 offset_bottom = -25.0
-value = 100.0
 
 [node name="Blinker" parent="." instance=ExtResource("5_hns8k")]
 

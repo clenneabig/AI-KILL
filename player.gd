@@ -13,6 +13,8 @@ var vel = 600
 var wait_time = 0.2
 var score = 0
 var power = 0
+var hitt = false
+var cooldown = 1.0
 var powerlevel = 1
 
 @onready var UI = $CanvasLayer
@@ -44,6 +46,7 @@ func start(pos):
 	$SpriteBox.disabled = false
 	$GrazeArea.monitoring = true
 	$GrazeArea.monitorable = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	UI.updateScore();
@@ -82,9 +85,13 @@ func _process(delta):
 		power = 0
 		$AudioStreamPlayer.stream = powerupsfx
 		$AudioStreamPlayer.play()
+
+	if hitt:
+		cooldown -= delta
+		if cooldown <= 0:
+			hitt = false
+			cooldown = 1.0
 	
-
-
 
 func _shoot(vel): #there is likely a better way to do this, but im the artist, not the programmer, teehee
 	if not Input.is_action_pressed("focus_mode"):
@@ -157,25 +164,26 @@ func _shoot(vel): #there is likely a better way to do this, but im the artist, n
 
 
 func _on_area_entered(area):
-	if area.is_in_group("Bullet"): #or enemy
+	if area.is_in_group("Bullet") and not hitt: #or enemy
+		hitt = true
 		$AudioStreamPlayer.stream = hurtsfx
 		$AudioStreamPlayer.play()
 		health -= 1
 		UI.updateHealth();
 		hit.emit()
 		if health <= 0:
-			print("deaded")
-			game_over.emit()
+			get_tree().change_scene_to_file("res://game_over.tscn")
 		hide() # Player disappears after being hit. #player needs to appear again lol
 		
 	# Must be deferred as we can't change physics properties on a physics callback.
 		if not $SpriteBox.is_invincible:
 			respawn()
+	
 	#$GrazeBox.set_deferred("disabled", true)
 func _on_graze_area_area_entered(area):
 	if area.is_in_group("Bullet"):
 		if(self.is_visible()):
-			print("add to style points")
+			score += 100
 
 
 func _on_shoot_time_timeout():
