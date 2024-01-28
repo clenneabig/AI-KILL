@@ -23,6 +23,7 @@ var CurrentState = State.Healthy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CollisionPolygon2D.disabled = true
 	$AnimatedSprite2D.play()
 
 
@@ -107,6 +108,7 @@ func _offScreen():
 
 func move_to_centre():
 	global_position = position.lerp(Vector2(1000, 327), 0.08)
+	$CollisionPolygon2D.disabled = false
 	if(global_position.x-1000 < 0.1):
 		inPos = true
 

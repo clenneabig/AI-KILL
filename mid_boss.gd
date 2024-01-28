@@ -22,6 +22,7 @@ var CurrentState = State.Healthy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$SpriteBox.disabled = true
 	$AnimatedSprite2D.play()
 
 
@@ -92,6 +93,7 @@ func _offScreen():
 func move_to_centre():
 	global_position = position.lerp(Vector2(1000, 327), 0.08)
 	if(global_position.x-1000 < 0.1):
+		$SpriteBox.disabled = false
 		inPos = true
 
 func _on_area_entered(area):

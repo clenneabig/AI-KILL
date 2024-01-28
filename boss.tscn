@@ -147,9 +147,9 @@ script = ExtResource("1_1remf")
 [node name="Emit" parent="." instance=ExtResource("1_s12qa")]
 position = Vector2(-17, 24)
 script = ExtResource("3_7ss7e")
-stg_wait_time = 1.0
+stg_wait_time = 0.5
 spawn_count = 12
-wait_time = 2.5
+wait_time = 3.0
 vel = 250
 texture = 6
 cycle = true
