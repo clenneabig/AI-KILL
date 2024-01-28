@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc435frlbu8i1"]
+[gd_scene load_steps=3 format=3 uid="uid://cr17ccssrdcws"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_octwd"]
+[ext_resource type="Texture2D" uid="uid://c0kfh7j22uvn5" path="res://assets/menuimg.png" id="2_r4kk4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,11 +12,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_octwd")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_r4kk4")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(9.20381, 4.77019)
+offset_left = 136.0
+offset_top = 304.0
+offset_right = 199.0
+offset_bottom = 405.0
+scale = Vector2(2.64323, 2.39782)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -25,6 +35,7 @@ layout_mode = 2
 text = "Play"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Settings"
 
