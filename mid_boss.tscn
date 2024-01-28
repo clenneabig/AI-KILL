@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpu2i608sov4l"]
+[gd_scene load_steps=13 format=3 uid="uid://bs6yar7840053"]
 
-[ext_resource type="Texture2D" uid="uid://b68kxgwywhw5q" path="res://assets/enemies/enemy2_spritesheet.png" id="1_74bk7"]
+[ext_resource type="Texture2D" uid="uid://bkoe5xxuc50ch" path="res://assets/enemies/enemy2_spritesheet.png" id="1_74bk7"]
 [ext_resource type="Script" path="res://mid_boss.gd" id="1_o77xn"]
 [ext_resource type="PackedScene" uid="uid://qjrut43w7wo0" path="res://BulletPattens/emit.tscn" id="3_4fxtj"]
 [ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="3_eqx4u"]
@@ -46,7 +46,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwkv4"]
 size = Vector2(32.3333, 17)
 
-[node name="MidBoss" type="Area2D"]
+[node name="MidBoss" type="Area2D" groups=["Boss"]]
 script = ExtResource("1_o77xn")
 
 [node name="Emit" parent="." instance=ExtResource("3_4fxtj")]

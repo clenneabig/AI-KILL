@@ -54,13 +54,13 @@ func _process(delta):
 				moveUp = true
 			if(moveUp):
 				global_position = global_position.lerp(Vector2(700, 0), 0.05)
-				print(position)
+				#print(position)
 				if (global_position.y < 200): #please ignore bad math I'm at wits end
 					moveUp = false
 					moveDown = true
 			if(moveDown):
 				global_position = position.lerp(Vector2(700, 550), 0.05)
-				print(position)
+				#print(position)
 				if(global_position.y > 400):
 					moveUp = true
 					moveDown = false

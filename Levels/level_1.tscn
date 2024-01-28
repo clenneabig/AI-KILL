@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://hxumoqi0wf5u"]
+[gd_scene load_steps=32 format=3 uid="uid://hxumoqi0wf5u"]
 
 [ext_resource type="PackedScene" uid="uid://xh6yp4d5802s" path="res://Levels/background.tscn" id="1_4056i"]
 [ext_resource type="Script" path="res://Levels/Enemies_1.gd" id="2_5yxem"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://BulletPattens/emit_dir_staggered_straight.gd" id="4_lqy13"]
 [ext_resource type="PackedScene" uid="uid://dmld4sshhilmo" path="res://player.tscn" id="5_7nkj2"]
 [ext_resource type="Script" path="res://BulletPattens/emit_burst_left.gd" id="6_pdbpd"]
-[ext_resource type="PackedScene" path="res://mid_boss.tscn" id="7_h6uf4"]
+[ext_resource type="PackedScene" uid="uid://bs6yar7840053" path="res://mid_boss.tscn" id="7_h6uf4"]
+[ext_resource type="PackedScene" uid="uid://d1nt2v7peffn5" path="res://power_up.tscn" id="9_yomiq"]
 
 [sub_resource type="Curve2D" id="Curve2D_gyrlu"]
 _data = {
@@ -558,6 +559,12 @@ position = Vector2(700, 500)
 [node name="Bullet_Node" type="Node2D" parent="." groups=["Bullet_Node"]]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("5_7nkj2")]
+
+[node name="PowerUp" parent="." instance=ExtResource("9_yomiq")]
+position = Vector2(306, 104)
+
+[node name="Enemy" parent="." instance=ExtResource("2_jb2pd")]
+position = Vector2(568, 80)
 
 [editable path="Enemies/Group_1/Path2D/PathFollow2D/Enemy1"]
 [editable path="Enemies/Group_1/Path2D/PathFollow2D/Enemy2"]

@@ -1,16 +1,17 @@
 extends Area2D
 
-var random_number = randi()% 8
+var random_number = randi() % 8
 var screen_size
 var left_vel = Vector2.ZERO
 var ended = false
+var cooldown = randf_range(0.5, 1.5)
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
 func _process(delta):
 	var velocity = Vector2.ZERO
-	if not ended:
+	if cooldown > 0:
 		match random_number:
 			0: 
 				velocity.x += 0.25
@@ -36,6 +37,7 @@ func _process(delta):
 		velocity = velocity.normalized() * 50
 		position += velocity * delta
 		position = position.clamp(Vector2.ZERO, screen_size)
+		cooldown -= delta
 	else:
 		left_vel += Vector2(-1,0).normalized() * 5
 		position += left_vel * delta

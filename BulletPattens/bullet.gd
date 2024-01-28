@@ -8,6 +8,7 @@ var acc = 1.0
 var accel = false
 var deccel = false
 var Acc_Cap = 100.0
+var screen_size
 
 @onready var sprite = $Sprite2D
 var red = preload("res://assets/bullets/enemybullets/redbullet.png")
@@ -23,6 +24,7 @@ var pink = preload("res://assets/bullets/enemybullets/pinkbullet.png")
 var textarr = [red, orange, yellow, green, cyan, blue, indigo, purple, pink]
 
 func _ready():
+	screen_size = get_viewport_rect().size
 	sprite.texture = textarr[0]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +33,7 @@ func _process(delta):
 	if(accel and curret_acc.x>(-Acc_Cap)): curret_acc.x -= acc/10
 	if(deccel and curret_acc.x < 4): curret_acc.x += acc/20
 	dur -= delta
-	if dur <= 0: #avoid memory eating
+	if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y: #avoid memory eating
 		queue_free()
 
 func _offScreen(): #explicity remove bullets when off screen so I can free enemies
