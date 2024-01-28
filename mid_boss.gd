@@ -5,7 +5,7 @@ extends Area2D
 @onready var emit_3 = $Emit3
 @onready var emit_4 = $Emit4
 
-@export var health = 1002
+@export var health = 3000
 var inPos = false
 var notShooting = true
 
