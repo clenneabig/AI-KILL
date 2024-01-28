@@ -39,6 +39,7 @@ func _process(delta):
 				if(group1.progress_ratio >= 0.45 && p == false):
 					paused = true
 					for enemy in group1.get_children():
+						enemy.sb.disabled = false
 						enemy.emit._startShootin()
 					var t =Timer.new()
 					t.wait_time = 3.0
@@ -58,6 +59,7 @@ func _process(delta):
 				if(group2.progress_ratio >= 0.45 && p == false):
 					paused = true
 					for enemy in group2.get_children():
+						enemy.sb.disabled = false
 						enemy.emit._startShootin()
 					var t =Timer.new()
 					t.wait_time = 3.0
@@ -72,6 +74,8 @@ func _process(delta):
 		Groups.Group3:
 			var childrenNo = group3.get_child_count()
 			for path in group3.get_children():
+				for enemy in path.get_child(0).get_children():
+					enemy.sb.disabled = false
 				path.get_child(0).progress += g_move_speed*2 * delta
 				if(path.get_child(0).progress_ratio >= 1.0):
 					childrenNo-=1
@@ -80,6 +84,8 @@ func _process(delta):
 		Groups.Group4:
 			var childrenNo = group4.get_child_count()
 			for path in group4.get_children():
+				for enemy in path.get_child(0).get_children():
+					enemy.sb.disabled = false
 				path.get_child(0).progress += g_move_speed*1.5 * delta
 				if(path.get_child(0).get_child_count() <= 0):
 					childrenNo-=1
@@ -101,6 +107,8 @@ func _process(delta):
 		Groups.Group5:
 			var childrenNo = group5.get_child_count()
 			for path in group5.get_children():
+				for enemy in path.get_child(0).get_children():
+					enemy.sb.disabled = false
 				path.get_child(0).progress += g_move_speed*2 * delta
 				if(path.get_child(0).get_child_count() <= 0):
 					childrenNo-=1
@@ -109,6 +117,8 @@ func _process(delta):
 		Groups.Group6:
 			var childrenNo = group6.get_child_count()
 			for path in group6.get_children():
+				for enemy in path.get_child(0).get_children():
+					enemy.sb.disabled = false
 				path.get_child(0).progress += g_move_speed*2 * delta
 				if(path.get_child(0).get_child_count() <= 0):
 					childrenNo-=1
