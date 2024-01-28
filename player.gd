@@ -15,6 +15,8 @@ var score = 0
 var power = 0
 var powerlevel = 1
 
+@onready var UI = $CanvasLayer
+@onready var bar = $ProgressBar
 #sounds
 var powerupsfx = preload("res://assets/sfx/levelup_joaojanz.wav")
 var shootsfx  = preload("res://assets/sfx/playerbulletfire_hootavi.wav")
@@ -44,6 +46,7 @@ func start(pos):
 	$GrazeArea.monitorable = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	UI.updateScore();
 	$Player.play()
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
@@ -64,6 +67,7 @@ func _process(delta):
 	if Input.is_action_pressed("bomb") and $ProgressBar.value == 100:
 		bomb.emit()
 		$ProgressBar.value = 0
+		UI.updateBomb();
 
 	if Input.is_action_just_pressed("toggle_bullets"):
 		bullets = not bullets
@@ -157,6 +161,7 @@ func _on_area_entered(area):
 		$AudioStreamPlayer.stream = hurtsfx
 		$AudioStreamPlayer.play()
 		health -= 1
+		UI.updateHealth();
 		hit.emit()
 		if health <= 0:
 			print("deaded")

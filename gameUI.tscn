@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch6gqvnrnpnfk"]
+
+[ext_resource type="Texture2D" uid="uid://bmvpsdakirumv" path="res://assets/ui.png" id="1_upqks"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_upqks")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 608.0
+offset_right = 248.0
+offset_bottom = 634.0
+text = "0"
+
+[node name="Lives" type="Label" parent="."]
+offset_left = 512.0
+offset_top = 16.0
+offset_right = 552.0
+offset_bottom = 39.0
+text = "0"
+
+[node name="Bomb" type="Label" parent="."]
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 42.0
+text = "0%"
